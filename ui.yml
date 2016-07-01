@@ -24,10 +24,10 @@ security:
 zuul:
   routes:
     resource:
-      path: /resource/**
+      path: /api/resource/**
       url: http://localhost:9000/resource
     user:
-      path: /user/**
+      path: /api/user/**
       url: http://localhost:9999/uaa/user
 
 logging:
