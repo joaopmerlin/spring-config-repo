@@ -1,0 +1,19 @@
+zuul:
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    auth-server:
+        path: /uaa/**
+        url: http://localhost:9999
+        stripPrefix: false
+
+    resource-service:
+        path: /resource/**
+        serviceId: http://localhost:9000
+        stripPrefix: false
+
+server:
+  port: 8080
+  context-path: /api
