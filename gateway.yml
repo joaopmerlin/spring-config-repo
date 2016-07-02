@@ -1,6 +1,4 @@
 zuul:
-  ignoredHeaders: - authorization
-
   routes:
     auth-server:
         path: /uaa/**
