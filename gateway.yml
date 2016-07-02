@@ -1,5 +1,5 @@
 zuul:
-  ignoredHeaders: authorization
+  ignoredHeaders: - authorization
 
   routes:
     auth-server:
