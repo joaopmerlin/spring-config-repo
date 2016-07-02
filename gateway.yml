@@ -1,3 +1,8 @@
+server:
+  port: 8080
+server:
+  contextPath: /api
+
 debug: true
 
 spring:
@@ -24,10 +29,10 @@ security:
 zuul:
   routes:
     resource:
-      path: /api/resource/**
+      path: /resource/**
       url: http://localhost:9000/resource
     user:
-      path: /api/user/**
+      path: /user/**
       url: http://localhost:9999/uaa/user
 
 logging:
