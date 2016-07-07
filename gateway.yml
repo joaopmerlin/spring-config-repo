@@ -1,15 +1,34 @@
-zuul:
-  routes:
-    auth-server:
-        path: /uaa/**
-        url: http://localhost:9999
-        stripPrefix: false
-
-    resource-service:
-        path: /resource/**
-        serviceId: http://localhost:9000
-        stripPrefix: false
-
 server:
   port: 8080
-  context-path: /
+
+debug: true
+
+spring:
+  aop:
+    proxy-target-class: true
+
+
+security:
+  user:
+    password: none
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9999/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user
+
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:9000/resource
+    user:
+      path: /user/**
+      url: http://localhost:9999/uaa/user
+
+logging:
+  level:
+    org.springframework.security: DEBUG
