@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  aop:
+    proxy-target-class: true
+
+security:
+  user:
+    password: none
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9999/auth/oauth/token
+      userAuthorizationUri: http://localhost:9999/auth/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+    resource:
+      userInfoUri: http://localhost:9999/auth/user
+
+zuul:
+  routes:
+    api:
+      path: /api/**
+      url: http://localhost:9000/api
+    auth:
+      path: /auth/**
+      url: http://localhost:9999/auth
